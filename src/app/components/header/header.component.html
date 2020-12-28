@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Restaurant</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/pedidos']">Hacer Pedidos</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/lista']">Pedidos</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/platos']">Platos</a>
+      </li>
+    </ul>
+    <div class="my-2 my-lg-0">
+      <a *ngIf="!authService.isAuthenticated()" [routerLink]="['/login']" class="btn btn-outline-success my-2 my-sm-0">Ingresar</a>
+      <div class="dropdown" *ngIf="authService.isAuthenticated()">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{authService.usuario}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+         <button (click)="logout()" class="dropdown-item" type="submit">Salir</button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</nav>
